@@ -50,11 +50,15 @@ function setup() {
 	ground = new Ground(width/2,height-10,width,20);
 
 	Engine.run(engine);
-  
+	//mousePressed();
 }
 // function mousePressed()
 // {
-// 	balls.push(new Ball(mouseY,mouseY,20));
+// 	let options = {
+// 		restitution:0.9,
+		
+// 	  }
+// 	balls.push(new Ball(mouseX,mouseY,10,options,"blue"));
 // }
 
 function draw() {
@@ -63,8 +67,11 @@ function draw() {
   ground.display();
   let options = {
 	restitution:0.9,
-	
+	//if(keyWentDown()){
+		//timeScale:2
+	//}
   }
+  
   noStroke();
   textSize(20);
   fill("s");
@@ -79,6 +86,9 @@ function draw() {
 	ball.display();
 	ball.fly();
 	ball.update();
+	if(keyDown("space")){
+	Matter.Body.update(ball.body,0,0, 0.2)
+	}
   }
   drawSprites();
  
